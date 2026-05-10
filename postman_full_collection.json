@@ -44,7 +44,7 @@
           },
           "response": [
             {
-              "id": "a693ab04-eb15-4180-b0fb-a873640e12b2",
+              "id": "30914a90-9ae8-4c23-887f-491e9905be28",
               "name": "200 — exemple (Liste des candidatures)",
               "status": "OK",
               "code": 200,
@@ -95,7 +95,7 @@
           },
           "response": [
             {
-              "id": "a32ab469-e578-4042-9c61-da40be6b5aed",
+              "id": "77d46d69-9a89-48d7-a2b0-342aecec0517",
               "name": "201 — exemple (Candidature creee)",
               "status": "Created",
               "code": 201,
@@ -133,7 +133,7 @@
           },
           "response": [
             {
-              "id": "ef31a0ba-3542-424e-9799-688501f1cc9b",
+              "id": "0c119b06-4a55-4a73-b93f-633d29e971fd",
               "name": "200 — exemple (Liste candidatures)",
               "status": "OK",
               "code": 200,
@@ -171,7 +171,7 @@
           },
           "response": [
             {
-              "id": "cf88e615-5cfe-4f56-8804-745bf0ff4438",
+              "id": "9c6df047-c55e-4a27-8df9-028d07b57fab",
               "name": "200 — exemple (Liste candidatures)",
               "status": "OK",
               "code": 200,
@@ -252,7 +252,7 @@
           },
           "response": [
             {
-              "id": "a8d63586-5c28-4574-94fe-3fa282b3add4",
+              "id": "8d9ffaa0-0f99-4e33-8c4a-778fdd071278",
               "name": "200 — exemple (Candidature mise a jour)",
               "status": "OK",
               "code": 200,
@@ -316,7 +316,7 @@
           },
           "response": [
             {
-              "id": "13618085-083c-4dad-822b-01cc4d19e142",
+              "id": "a7f9d702-d6f4-48a4-be82-94053145d7fb",
               "name": "200 — exemple (Detail candidature)",
               "status": "OK",
               "code": 200,
@@ -383,7 +383,7 @@
           },
           "response": [
             {
-              "id": "c2151990-dc29-45ce-80ce-864cc806e84f",
+              "id": "7c158ec6-5d0d-4eed-af01-f07d09af683f",
               "name": "200 — exemple (Agrégat module)",
               "status": "OK",
               "code": 200,
@@ -423,7 +423,7 @@
           },
           "response": [
             {
-              "id": "7cc22fbc-2300-451e-bab7-dd75a7e287ba",
+              "id": "85a270a6-1ed1-4362-8e5b-99dff54f4b6f",
               "name": "200 — exemple (Module complété)",
               "status": "OK",
               "code": 200,
@@ -465,7 +465,7 @@
           },
           "response": [
             {
-              "id": "611902e3-1cbe-4d24-a239-435410c36902",
+              "id": "3b19b874-3d46-4d6d-8d01-1dfddf6bdcda",
               "name": "200 — exemple (Contenu complété)",
               "status": "OK",
               "code": 200,
@@ -504,7 +504,7 @@
           },
           "response": [
             {
-              "id": "0cbf103a-8d03-42be-bfd9-b9b34c7a142f",
+              "id": "e41b92cb-904e-48a5-9cc5-af4fb1af4268",
               "name": "200 — exemple (Progression calculee)",
               "status": "OK",
               "code": 200,
@@ -544,7 +544,7 @@
           },
           "response": [
             {
-              "id": "cd06c692-102f-48e9-aebe-a47a51287535",
+              "id": "f5b99e69-40e1-4037-ad41-fed7ed6041de",
               "name": "200 — exemple (Liste tentatives)",
               "status": "OK",
               "code": 200,
@@ -598,7 +598,7 @@
           },
           "response": [
             {
-              "id": "d8132745-b3a2-42fd-aef2-3c4ea174a134",
+              "id": "3ef44a6b-7453-4d15-a585-4d818a974a26",
               "name": "201 — exemple (Tentative enregistrée)",
               "status": "Created",
               "code": 201,
@@ -674,7 +674,7 @@
           },
           "response": [
             {
-              "id": "7a45dd04-eb96-459a-a437-2605e000fcaa",
+              "id": "d462882c-180f-49ee-b59d-795d04109307",
               "name": "200 — exemple (Liste certificats)",
               "status": "OK",
               "code": 200,
@@ -739,7 +739,7 @@
           },
           "response": [
             {
-              "id": "56919eb4-0d74-4817-a0b3-9639fb848a70",
+              "id": "51faf8e4-6c0b-4a2e-a59e-6d58acb44329",
               "name": "200 — exemple (Detail certificat)",
               "status": "OK",
               "code": 200,
@@ -804,7 +804,7 @@
           },
           "response": [
             {
-              "id": "723035a1-bf57-4238-93c2-61f9b55ccbd2",
+              "id": "5bf40bed-b5a4-45c8-ab1e-29fd2440d5eb",
               "name": "200 — exemple ()",
               "status": "OK",
               "code": 200,
@@ -856,7 +856,7 @@
           },
           "response": [
             {
-              "id": "76f14e4a-4514-4dd0-a2f1-730297fcaca7",
+              "id": "92729448-c30f-4d2c-abd5-803ffe992784",
               "name": "200 — exemple ()",
               "status": "OK",
               "code": 200,
@@ -898,7 +898,7 @@
           },
           "response": [
             {
-              "id": "c0a9994c-4baf-4790-a5fa-0a932613c877",
+              "id": "4319540e-ea25-49f4-a4f0-2d340b857806",
               "name": "200 — exemple (Liste des participations)",
               "status": "OK",
               "code": 200,
@@ -949,7 +949,7 @@
           },
           "response": [
             {
-              "id": "f6196684-e7f5-4edb-8e47-54245e79d7af",
+              "id": "aedc0ba5-145b-4492-84d0-9054fe765f86",
               "name": "201 — exemple (Participation creee)",
               "status": "Created",
               "code": 201,
@@ -1013,7 +1013,7 @@
           },
           "response": [
             {
-              "id": "c3371c8f-8f3c-4c15-896f-84483133577c",
+              "id": "c6dd0899-1044-4b25-8342-d65a58df8ebf",
               "name": "200 — exemple (Detail participation)",
               "status": "OK",
               "code": 200,
@@ -1065,7 +1065,7 @@
           },
           "response": [
             {
-              "id": "7d1f2266-767c-417a-95f8-1ebcf377e310",
+              "id": "546119ca-aa02-48ca-8998-71a6737d0d34",
               "name": "200 — exemple (Participation modifiee)",
               "status": "OK",
               "code": 200,
@@ -1117,7 +1117,7 @@
           },
           "response": [
             {
-              "id": "ab4f53f6-1119-4805-8eb8-facb530611af",
+              "id": "02a50d11-9bd7-485a-9702-01f410bb1fcc",
               "name": "200 — exemple (Participation modifiee)",
               "status": "OK",
               "code": 200,
@@ -1154,7 +1154,7 @@
           },
           "response": [
             {
-              "id": "dcee3259-95c2-45bd-a144-2fc0ad78b95e",
+              "id": "d495d4b2-5eee-481f-8a1d-8e07318791d6",
               "name": "200 — exemple (Liste des sessions)",
               "status": "OK",
               "code": 200,
@@ -1205,7 +1205,7 @@
           },
           "response": [
             {
-              "id": "22b8bed6-8f4d-42a0-8269-e58cc28e4131",
+              "id": "99f45e9d-b489-4180-ad4f-9962d053a609",
               "name": "201 — exemple (Session creee)",
               "status": "Created",
               "code": 201,
@@ -1295,7 +1295,7 @@
           },
           "response": [
             {
-              "id": "ddd76081-2653-4693-b53a-f164f37138d5",
+              "id": "0f4d4f9f-f538-4ab5-842d-881c17622d41",
               "name": "200 — exemple (Detail session)",
               "status": "OK",
               "code": 200,
@@ -1347,7 +1347,7 @@
           },
           "response": [
             {
-              "id": "7ddc44b6-8a49-4a1d-8011-e36f05ecf824",
+              "id": "53ddb639-5033-4696-883b-5198858ec731",
               "name": "200 — exemple (Session modifiee)",
               "status": "OK",
               "code": 200,
@@ -1399,7 +1399,7 @@
           },
           "response": [
             {
-              "id": "901b1601-1669-4a95-9fd6-0cd4c47db2da",
+              "id": "9c63e86e-a988-4b72-807d-dd6dfb66fda5",
               "name": "200 — exemple (Session modifiee)",
               "status": "OK",
               "code": 200,
@@ -1494,7 +1494,7 @@
           },
           "response": [
             {
-              "id": "a9400368-8515-44c2-9560-7fb5153e8993",
+              "id": "db516517-86d3-4c28-b0e5-2efd0092fc88",
               "name": "200 — exemple (Contacts)",
               "status": "OK",
               "code": 200,
@@ -1530,7 +1530,7 @@
           },
           "response": [
             {
-              "id": "fa155946-0d46-4986-af4c-c69a65b1c860",
+              "id": "635861c9-adc7-4d00-b1a7-959d62920b86",
               "name": "200 — exemple (Conversations)",
               "status": "OK",
               "code": 200,
@@ -1581,7 +1581,7 @@
           },
           "response": [
             {
-              "id": "1eeb462d-5d7b-464b-b5e7-bb311a54c8c8",
+              "id": "b8271bfc-f41e-4240-8e6f-142081d705cf",
               "name": "200 — exemple (Conversation)",
               "status": "OK",
               "code": 200,
@@ -1619,7 +1619,7 @@
           },
           "response": [
             {
-              "id": "0d605bbc-4a37-49e3-a90d-02477f5bb2d3",
+              "id": "6bb85acf-3a32-46e1-9788-a5171fa99ff4",
               "name": "200 — exemple (Conversation)",
               "status": "OK",
               "code": 200,
@@ -1658,7 +1658,7 @@
           },
           "response": [
             {
-              "id": "4aeae298-230e-4e5f-8280-01d5204bc6cd",
+              "id": "baddcbc4-3773-4799-bfeb-849f2fe958b2",
               "name": "200 — exemple (Conversation)",
               "status": "OK",
               "code": 200,
@@ -1695,7 +1695,7 @@
           },
           "response": [
             {
-              "id": "77f81946-a8f7-4314-8e30-8fef64316cb5",
+              "id": "9fcca6bf-2229-42b1-8063-b887c3061ec5",
               "name": "200 — exemple (Unread count)",
               "status": "OK",
               "code": 200,
@@ -1733,7 +1733,7 @@
           },
           "response": [
             {
-              "id": "a46913e5-4698-4a6f-8080-83bfabdd2f27",
+              "id": "68b75173-67e8-479f-b8e3-584c7c02afde",
               "name": "200 — exemple (Messages)",
               "status": "OK",
               "code": 200,
@@ -1786,7 +1786,7 @@
           },
           "response": [
             {
-              "id": "1f3f0666-9322-4bd5-96e6-3a04776ba548",
+              "id": "66639dc2-71d8-4a4d-985c-727ac3c06685",
               "name": "201 — exemple (Message)",
               "status": "Created",
               "code": 201,
@@ -1853,7 +1853,7 @@
           },
           "response": [
             {
-              "id": "be8be1cf-3fe1-45a2-8e9d-16448d25cb68",
+              "id": "df75768c-02a4-4c9e-b232-55c0ac423805",
               "name": "200 — exemple (Liste notifications)",
               "status": "OK",
               "code": 200,
@@ -2060,7 +2060,7 @@
           },
           "response": [
             {
-              "id": "f29d9400-19d2-49dc-8388-17110aac7fc4",
+              "id": "2fbbbac9-facf-4294-a84b-93563c30d94b",
               "name": "200 — exemple (Notification)",
               "status": "OK",
               "code": 200,
@@ -2102,7 +2102,7 @@
           },
           "response": [
             {
-              "id": "7037bfb3-54e7-4cd6-9ce5-13dce19c1433",
+              "id": "c4072c63-3335-4dd0-8e2c-391332026d75",
               "name": "200 — exemple (Liste des modules)",
               "status": "OK",
               "code": 200,
@@ -2153,7 +2153,7 @@
           },
           "response": [
             {
-              "id": "5c3d57c2-0944-42cd-9e08-190d72646065",
+              "id": "8f378c6c-5262-4073-99c9-9e5cc78c2a3e",
               "name": "201 — exemple (Module cree)",
               "status": "Created",
               "code": 201,
@@ -2217,7 +2217,7 @@
           },
           "response": [
             {
-              "id": "7a5e301d-1233-4aa8-b449-869069b6f56a",
+              "id": "596ed1fe-b33b-4b6d-9a13-bd0548c6962b",
               "name": "200 — exemple (Detail module)",
               "status": "OK",
               "code": 200,
@@ -2269,7 +2269,7 @@
           },
           "response": [
             {
-              "id": "9a9c9c18-c0b9-4683-86f6-adcbb976869c",
+              "id": "8b68f6e4-8926-497b-b8d6-14aee8c3cb9f",
               "name": "200 — exemple (Module modifie)",
               "status": "OK",
               "code": 200,
@@ -2321,7 +2321,7 @@
           },
           "response": [
             {
-              "id": "21804d49-1953-47a8-be64-27c100c30c7b",
+              "id": "a4efa8fb-e596-4b2c-866b-a8a2ea8fa97a",
               "name": "200 — exemple (Module modifie)",
               "status": "OK",
               "code": 200,
@@ -2358,7 +2358,7 @@
           },
           "response": [
             {
-              "id": "6861ce09-cd73-461c-b2bd-eaac3ce48a80",
+              "id": "a4870134-4138-42d3-bea8-9bfee53c444a",
               "name": "200 — exemple (Liste des programmes)",
               "status": "OK",
               "code": 200,
@@ -2409,7 +2409,7 @@
           },
           "response": [
             {
-              "id": "5cc5544d-5554-49f0-8253-c559855ea6a0",
+              "id": "5f4478e2-5435-49cb-b6be-baad496587dc",
               "name": "201 — exemple (Programme cree)",
               "status": "Created",
               "code": 201,
@@ -2473,7 +2473,7 @@
           },
           "response": [
             {
-              "id": "bdf89026-83ee-4bd2-b77e-78fb60a93b50",
+              "id": "ef2162c4-3163-4142-837d-895de895c97f",
               "name": "200 — exemple (Detail programme)",
               "status": "OK",
               "code": 200,
@@ -2525,7 +2525,7 @@
           },
           "response": [
             {
-              "id": "2f71355b-2e9c-46ec-97bf-abb663b6a464",
+              "id": "adab0839-62e4-4f2f-9728-21d107e00dc3",
               "name": "200 — exemple (Programme modifie)",
               "status": "OK",
               "code": 200,
@@ -2577,7 +2577,7 @@
           },
           "response": [
             {
-              "id": "df4adf1b-19ce-4602-b858-c05c299d6ffa",
+              "id": "f4bd7f7d-a835-41b1-a97b-4e46c732ecd0",
               "name": "200 — exemple (Programme modifie)",
               "status": "OK",
               "code": 200,
@@ -2618,7 +2618,7 @@
           },
           "response": [
             {
-              "id": "a40ec6f0-5a92-4655-ab4b-4fda4004de85",
+              "id": "8b618415-fa52-4e4a-bf27-89ea409f6b34",
               "name": "200 — exemple (Liste fichiers)",
               "status": "OK",
               "code": 200,
@@ -2678,7 +2678,7 @@
           },
           "response": [
             {
-              "id": "dd062493-d2ea-4303-a629-d7deeab7720a",
+              "id": "a241071b-1f36-4d16-a9ac-3e461c5c6fd7",
               "name": "201 — exemple (Upload reussi)",
               "status": "Created",
               "code": 201,
@@ -2738,7 +2738,7 @@
           },
           "response": [
             {
-              "id": "27f6afe3-8748-440e-ae86-d0c97a7539fd",
+              "id": "799668e1-9223-4407-a4c6-49e3ae4982bd",
               "name": "200 — exemple (Fichier)",
               "status": "OK",
               "code": 200,
@@ -2754,6 +2754,44 @@
     {
       "name": "Users",
       "item": [
+        {
+          "name": "GET Dashboard admin — statistiques agregees",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/users/admin/dashboard/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "admin",
+                "dashboard"
+              ]
+            },
+            "description": "Reserve aux comptes admin (voir IsAdminUserCustom). Retourne compteurs (utilisateurs par role, programmes par validation, candidatures par statut, sessions mentorat, messagerie, notifications non lues, fichiers uploads) et listes recentes pour alimenter graphes et tableaux."
+          },
+          "response": [
+            {
+              "id": "adc6bb37-e7d4-48ab-87e4-a39157e78f96",
+              "name": "200 — exemple (Dashboard)",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n  \"generated_at\": \"string\",\n  \"counts\": {},\n  \"recent\": {}\n}"
+            }
+          ]
+        },
         {
           "name": "POST users_auth_login_create",
           "request": {
@@ -2795,7 +2833,7 @@
           },
           "response": [
             {
-              "id": "e7c3d55b-2a9c-4755-8f89-d55924066a6d",
+              "id": "18dc8aa6-a6a0-40b7-9fcc-99e1a0e0d1b1",
               "name": "201 — exemple ()",
               "status": "Created",
               "code": 201,
@@ -2885,7 +2923,7 @@
           },
           "response": [
             {
-              "id": "305cdfdd-9a35-47e1-88b4-5dcac4dcf24c",
+              "id": "1998f5ee-ea1f-42d2-b91f-849925f9e9ac",
               "name": "200 — exemple (Profil utilisateur)",
               "status": "OK",
               "code": 200,
@@ -2937,7 +2975,7 @@
           },
           "response": [
             {
-              "id": "eb175459-a3ee-493c-b9e3-fdccd0f77015",
+              "id": "cdfe31f3-384b-4f5a-bbe0-88946539c076",
               "name": "200 — exemple (Profil utilisateur mis a jour)",
               "status": "OK",
               "code": 200,
@@ -2990,7 +3028,7 @@
           },
           "response": [
             {
-              "id": "cf1bd7ae-15f2-4206-9cc7-259f8fb0c3aa",
+              "id": "4dcd2a28-3beb-407c-9e17-fbafdfe69c99",
               "name": "200 — exemple (Mot de passe modifie)",
               "status": "OK",
               "code": 200,
@@ -3043,7 +3081,7 @@
           },
           "response": [
             {
-              "id": "e759d6d9-238e-47ec-8005-69db2862a1c3",
+              "id": "79045ea7-b947-4b36-8af8-22b46a5ce7c4",
               "name": "200 — exemple (Email envoye)",
               "status": "OK",
               "code": 200,
@@ -3097,7 +3135,7 @@
           },
           "response": [
             {
-              "id": "019ba12b-e129-4bb8-a8f8-4025421d62f3",
+              "id": "af2221bd-091f-4c3a-be20-a077c3b35446",
               "name": "200 — exemple (Mot de passe reinitialise)",
               "status": "OK",
               "code": 200,
@@ -3149,7 +3187,7 @@
           },
           "response": [
             {
-              "id": "b14d7ca1-a7b5-424a-8f37-5fea23adfa6b",
+              "id": "4e65cd54-2d2d-41cb-a47a-ed22408170c3",
               "name": "201 — exemple ()",
               "status": "Created",
               "code": 201,
@@ -3202,7 +3240,7 @@
           },
           "response": [
             {
-              "id": "dea9be45-a876-4082-9cc9-b1dac568ec96",
+              "id": "65a61522-4971-4295-9838-014be010f161",
               "name": "201 — exemple ()",
               "status": "Created",
               "code": 201,
@@ -3255,7 +3293,7 @@
           },
           "response": [
             {
-              "id": "0abc4289-0e3c-4bee-8fda-67a4b96221a2",
+              "id": "dc4e18ef-64fa-485b-961f-a94c98534c85",
               "name": "201 — exemple ()",
               "status": "Created",
               "code": 201,
@@ -3307,7 +3345,7 @@
           },
           "response": [
             {
-              "id": "31bed42f-5915-4226-8803-52fcddd3b65c",
+              "id": "b573b488-fd80-4886-974c-8e41bdd852eb",
               "name": "201 — exemple (Connexion reussie)",
               "status": "Created",
               "code": 201,
@@ -3345,7 +3383,7 @@
           },
           "response": [
             {
-              "id": "8b0b3f5f-6fc9-4477-ad0c-70f72789157c",
+              "id": "572d4008-c23d-4dad-b156-1e1e2c17f988",
               "name": "200 — exemple ()",
               "status": "OK",
               "code": 200,
@@ -3397,7 +3435,7 @@
           },
           "response": [
             {
-              "id": "ab14a9a0-9dc3-42f9-ab20-da9d3b73c2ac",
+              "id": "aa8dd2cc-44e8-46a9-b196-70d83df17a54",
               "name": "200 — exemple ()",
               "status": "OK",
               "code": 200,
@@ -3449,7 +3487,7 @@
           },
           "response": [
             {
-              "id": "ab17ff76-ece9-4714-9a2a-d96281a0309c",
+              "id": "5e1c9a59-3407-4997-9c67-bb11bf1cdb2d",
               "name": "200 — exemple ()",
               "status": "OK",
               "code": 200,
@@ -3487,7 +3525,7 @@
           },
           "response": [
             {
-              "id": "6955f5c7-df4b-426e-a239-646cc9c79ea4",
+              "id": "a6b475e9-a0ea-46a3-93b4-a056964941de",
               "name": "200 — exemple (Liste utilisateurs)",
               "status": "OK",
               "code": 200,
@@ -3497,6 +3535,60 @@
               "body": "[\n  {\n    \"id\": 1,\n    \"email\": \"user@example.com\",\n    \"username\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"role\": \"student\",\n    \"profile_picture\": \"https://example.com/resource\",\n    \"profile_picture_url\": \"https://example.com/resource\",\n    \"country\": \"string\",\n    \"phone_number\": \"string\",\n    \"notify_email_modules\": true,\n    \"notify_email_quiz_deadlines\": true,\n    \"notify_email_live_sessions\": true,\n    \"notify_push_important_updates\": true\n  }\n]"
             }
           ]
+        },
+        {
+          "name": "GET users_auth_users_read",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/users/auth/users/{id}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "auth",
+                "users",
+                "{id}"
+              ]
+            },
+            "description": "Détail utilisateur + mise à jour du champ `role` par le staff (liste des cas gérés\ndans `AdminUserRoleUpdateSerializer`)."
+          }
+        },
+        {
+          "name": "PATCH users_auth_users_partial_update",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/users/auth/users/{id}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "auth",
+                "users",
+                "{id}"
+              ]
+            },
+            "description": "Détail utilisateur + mise à jour du champ `role` par le staff (liste des cas gérés\ndans `AdminUserRoleUpdateSerializer`)."
+          }
         },
         {
           "name": "POST Connexion email/mot de passe",
@@ -3538,7 +3630,7 @@
           },
           "response": [
             {
-              "id": "94863198-1ed4-44e4-9932-ab9c123772c5",
+              "id": "fdce1738-7811-417b-a6b4-3a2e2e94b6f9",
               "name": "200 — exemple (Connexion reussie)",
               "status": "OK",
               "code": 200,
@@ -3628,7 +3720,7 @@
           },
           "response": [
             {
-              "id": "4f518296-8586-43bf-b48d-8ae21d16a3b6",
+              "id": "09ab66c2-e462-42f8-bb75-4026626e186e",
               "name": "201 — exemple (Compte cree)",
               "status": "Created",
               "code": 201,
@@ -3667,7 +3759,7 @@
           },
           "response": [
             {
-              "id": "9f112116-6983-408a-a243-e1c3d43c9096",
+              "id": "adbb20d6-41ba-41a3-8d64-63cec9e02e3b",
               "name": "200 — exemple (Compte active)",
               "status": "OK",
               "code": 200,

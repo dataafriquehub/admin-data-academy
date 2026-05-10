@@ -2293,6 +2293,31 @@
                 }
             ]
         },
+        "/users/admin/dashboard/": {
+            "get": {
+                "operationId": "users_admin_dashboard_list",
+                "summary": "Dashboard admin — statistiques agregees",
+                "description": "Reserve aux comptes admin (voir IsAdminUserCustom). Retourne compteurs (utilisateurs par role, programmes par validation, candidatures par statut, sessions mentorat, messagerie, notifications non lues, fichiers uploads) et listes recentes pour alimenter graphes et tableaux.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Dashboard",
+                        "schema": {
+                            "$ref": "#/definitions/AdminDashboard"
+                        }
+                    }
+                },
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            },
+            "parameters": []
+        },
         "/users/auth/login/": {
             "post": {
                 "operationId": "users_auth_login_create",
@@ -2730,6 +2755,43 @@
                 ]
             },
             "parameters": []
+        },
+        "/users/auth/users/{id}/": {
+            "get": {
+                "operationId": "users_auth_users_read",
+                "description": "Détail utilisateur + mise à jour du champ `role` par le staff (liste des cas gérés\ndans `AdminUserRoleUpdateSerializer`).",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "users"
+                ]
+            },
+            "patch": {
+                "operationId": "users_auth_users_partial_update",
+                "description": "Détail utilisateur + mise à jour du champ `role` par le staff (liste des cas gérés\ndans `AdminUserRoleUpdateSerializer`).",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "users"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this user.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
         },
         "/users/login/": {
             "post": {
@@ -5732,6 +5794,29 @@
                     "type": "string",
                     "format": "date-time",
                     "readOnly": true
+                }
+            }
+        },
+        "AdminDashboard": {
+            "required": [
+                "generated_at",
+                "counts",
+                "recent"
+            ],
+            "type": "object",
+            "properties": {
+                "generated_at": {
+                    "title": "Generated at",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "counts": {
+                    "title": "Counts",
+                    "type": "object"
+                },
+                "recent": {
+                    "title": "Recent",
+                    "type": "object"
                 }
             }
         },

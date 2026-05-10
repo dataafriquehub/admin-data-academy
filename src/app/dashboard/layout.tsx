@@ -1,5 +1,5 @@
 import { AuthGuard } from "@/components/auth-guard";
-import { AppShell } from "@/components/shell/app-shell";
+import Layout from "@/components/layout/Layout";
 
 export default function DashboardLayout({
   children,
@@ -8,7 +8,7 @@ export default function DashboardLayout({
 }) {
   return (
     <AuthGuard>
-      <AppShell>{children}</AppShell>
+      <Layout>{children}</Layout>
     </AuthGuard>
   );
 }

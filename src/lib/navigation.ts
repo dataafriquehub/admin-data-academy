@@ -1,65 +1,91 @@
 import type { UserRole } from "./types";
 
+export type NavKey =
+  | "dashboard"
+  | "programs"
+  | "modules"
+  | "admissions"
+  | "mentorship"
+  | "community"
+  | "notifications"
+  | "users"
+  | "profile"
+  | "settings"
+  | "help";
+
 export type NavItem = {
+  key: NavKey;
   href: string;
-  label: string;
   icon: string;
+  label: string;
   roles: UserRole[];
 };
 
 export const NAV_ITEMS: NavItem[] = [
   {
+    key: "dashboard",
     href: "/dashboard",
+    icon: "solar:home-smile-bold",
     label: "Tableau de bord",
-    icon: "solar:widget-5-bold-duotone",
     roles: ["admin", "program_creator", "mentor"],
   },
   {
+    key: "programs",
     href: "/dashboard/programs",
+    icon: "solar:clipboard-list-bold",
     label: "Programmes",
-    icon: "solar:diploma-bold-duotone",
     roles: ["admin", "program_creator", "mentor"],
   },
   {
+    key: "modules",
     href: "/dashboard/modules",
+    icon: "ph:stack-fill",
     label: "Modules",
-    icon: "solar:book-bookmark-bold-duotone",
     roles: ["admin", "program_creator"],
   },
   {
+    key: "admissions",
     href: "/dashboard/admissions",
+    icon: "solar:document-text-bold",
     label: "Candidatures",
-    icon: "solar:clipboard-list-bold-duotone",
     roles: ["admin", "program_creator", "mentor"],
   },
   {
+    key: "mentorship",
     href: "/dashboard/mentorship",
+    icon: "fluent:video-person-16-regular",
     label: "Mentorat",
-    icon: "solar:users-group-rounded-bold-duotone",
     roles: ["admin", "mentor"],
   },
   {
+    key: "community",
     href: "/dashboard/messaging",
-    label: "Messagerie",
-    icon: "solar:chat-round-dots-bold-duotone",
+    icon: "solar:users-group-two-rounded-bold",
+    label: "Communauté",
     roles: ["admin", "program_creator", "mentor"],
   },
   {
+    key: "notifications",
     href: "/dashboard/notifications",
+    icon: "solar:bell-bold",
     label: "Notifications",
-    icon: "solar:bell-bold-duotone",
     roles: ["admin", "program_creator", "mentor"],
   },
   {
+    key: "users",
     href: "/dashboard/users",
+    icon: "solar:users-group-rounded-bold",
     label: "Utilisateurs",
-    icon: "solar:user-id-bold-duotone",
     roles: ["admin"],
   },
+];
+
+export const SETTING_ITEMS: NavItem[] = [
   {
+    key: "settings",
     href: "/dashboard/settings",
+    icon: "solar:settings-bold",
     label: "Paramètres",
-    icon: "solar:settings-bold-duotone",
     roles: ["admin", "program_creator", "mentor"],
   },
 ];
@@ -67,4 +93,9 @@ export const NAV_ITEMS: NavItem[] = [
 export function navForRole(role: UserRole | undefined): NavItem[] {
   if (!role) return [];
   return NAV_ITEMS.filter((item) => item.roles.includes(role));
+}
+
+export function settingsForRole(role: UserRole | undefined): NavItem[] {
+  if (!role) return [];
+  return SETTING_ITEMS.filter((item) => item.roles.includes(role));
 }

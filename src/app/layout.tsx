@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/providers/auth-provider";
-import { ThemeProvider } from "@/providers/theme-provider";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -14,6 +13,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Data Academy — Backoffice",
   description: "Administration Data Academy",
+  icons: {
+    icon: "/academy-logo.svg",
+    shortcut: "/academy-logo.svg",
+    apple: "/academy-logo.svg",
+  },
 };
 
 export default function RootLayout({
@@ -27,10 +31,8 @@ export default function RootLayout({
       className={`${poppins.variable} h-full`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col font-sans">
-        <ThemeProvider>
-          <AuthProvider>{children}</AuthProvider>
-        </ThemeProvider>
+      <body className="min-h-full font-sans">
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

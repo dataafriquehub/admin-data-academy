@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Backoffice — Data Academy
 
-## Getting Started
+Backoffice Next.js (App Router) consommant l’API **Data Academy**.
+Sa coque visuelle (sidebar / topbar / panneaux / modale) **réplique** celle du portail étudiant `front-data-academy-student` ; seules les entrées de menu et les pages métier diffèrent.
 
-First, run the development server:
+Voir [`docs/BACKOFFICE_NEXTJS.md`](docs/BACKOFFICE_NEXTJS.md) pour le cadrage produit / API et `swagger.json` pour le contrat.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Toutes les specs détaillées par écran sont dans le dossier [`docs/`](docs/) :
+
+- `BACKOFFICE_NEXTJS.md` — cadrage global (auth, API, charte UI, conventions)
+- `Backoffice_dashboard.md` — Tableau de bord
+- `Backoffice_users.md` — Utilisateurs
+- `Backoffice_programs.md` — Programmes
+- `Backoffice_modules.md` — Modules
+- `Backoffice_applications.md` — Candidatures
+- `Backoffice_mentorship.md` — Mentorat
+- `Backoffice_notifications.md` — Notifications
+- `Backoffice_settings.md` — Paramètres
+- `message_backoffice.md` — Messagerie
+
+## Variables d’environnement
+
+Dans `.env.local` à la racine :
+
+```
+# URL de l'API. Pas de slash final. Inclure /api si tout y est exposé.
+NEXT_PUBLIC_API_BASE_URL=https://api-academy-dev.dataafriquehub.org/api
+
+# Optionnel : route du refresh JWT si différente du défaut /users/auth/token/refresh/
+# NEXT_PUBLIC_JWT_REFRESH_PATH=/users/auth/token/refresh/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Lancer en local
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+npm run dev          # http://localhost:3000
+npm run lint
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Arborescence clé
 
-## Learn More
+```
+src/
+  app/
+    layout.tsx                 # Poppins + AuthProvider
+    login/page.tsx
+    dashboard/
+      layout.tsx               # AuthGuard + <Layout>
+      page.tsx                 # tableau de bord
+      programs/  modules/  admissions/  mentorship/
+      messaging/  notifications/  users/  profile/  settings/
+  components/
+    layout/Layout.tsx          # coque (drawer mobile, collapse desktop, bouton flottant)
+    layout/Sidebar.tsx         # logo, sections Navigation / Paramètres, badge messages
+    layout/TopBar.tsx          # hamburger, search, messages, notifs, theme, avatar+menu, modale
+    ConfirmAction.tsx          # modale de confirmation (portail)
+    auth-guard.tsx
+    ui/                        # primitives (Button, Card, Input, Badge)
+  hooks/useTheme.ts            # light/dark/system, classe sur <html>
+  lib/api.ts                   # apiFetch + Bearer + refresh JWT
+  lib/navigation.ts            # NAV_ITEMS, SETTING_ITEMS, filtres rôle
+  lib/types.ts  config.ts
+  providers/auth-provider.tsx
+  services/notificationService.ts
+  services/messagingService.ts # téléchargement pièce jointe en blob authentifié
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Checklist alignement avec `front-data-academy-student`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [x] **Sidebar équivalente** — fixed/relative, drawer mobile, **collapse 224 ↔ 72px**, bouton flottant `solar:alt-arrow-left-bold`, sections **Navigation** + **Paramètres**, badge messages avec polling, transitions max-width/opacity identiques
+- [x] **TopBar équivalente** — hamburger mobile, slot gauche, recherche optionnelle, panneau **Messages** (polling 30 s, aperçu, lien « Tout voir »), panneau **Notifications** (polling 60 s, mark-all-read), toggle clair/sombre, séparateur, **avatar + menu** (Profil, Paramètres, Politique, Déconnexion) + **modale `ConfirmAction`** avant logout
+- [x] **Dark mode** — `useTheme` (`light` / `dark` / `system`), classes `.dark` / `.light` posées sur `<html>`, `prefers-color-scheme` honoré, copie exacte du bloc `@theme` et des variables neutres dark de la ref dans `src/app/globals.css`
+- [x] **Typographie** — Poppins via `next/font` (`--font-poppins`)
+- [x] **Iconify** — famille **Solar** comme la ref
+- [x] **Filtrage rôle** — menu sidebar et accès basés sur `role` (`GET /users/auth/me/`)
+- [x] **Pas de lien nu** vers `/messaging/attachments/{id}/download/` — téléchargement en blob avec Bearer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Ce qui diffère volontairement de l’étudiant
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Routes et libellés du menu (programmes côté admin/concepteur, candidatures, mentorat staff, utilisateurs, etc.)
+- Pas de sélecteur de langue dans la sidebar (le repo étudiant a `react-i18next`, le backoffice est en français uniquement). Le slot existe — ajouter un i18n est trivial si nécessaire.
+- Logo simplifié (icône `solar:graduation-bold` + libellé `DATA ACADEMY admin`) tant que `/academy-logo.svg` n’est pas fourni dans `public/`. Pour l’ajouter, déposer le fichier dans `public/academy-logo.svg` et remplacer l’`Icon` du composant `Sidebar.tsx` par `<img src="/academy-logo.svg" />`.

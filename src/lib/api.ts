@@ -6,6 +6,18 @@ const STORAGE_REFRESH = "da_refresh";
 
 let refreshPromise: Promise<boolean> | null = null;
 
+export class ApiError extends Error {
+  status: number;
+  payload?: unknown;
+
+  constructor(message: string, status: number, payload?: unknown) {
+    super(message);
+    this.name = "ApiError";
+    this.status = status;
+    this.payload = payload;
+  }
+}
+
 export function getStoredAccessToken(): string | null {
   if (typeof window === "undefined") return null;
   return localStorage.getItem(STORAGE_ACCESS);
@@ -28,16 +40,20 @@ export function clearTokens() {
   localStorage.removeItem(STORAGE_REFRESH);
 }
 
-async function parseError(res: Response): Promise<Error> {
+async function parseError(res: Response): Promise<ApiError> {
   try {
     const data: Record<string, unknown> = await res.json();
     const detail = data.detail;
-    if (typeof detail === "string") return new Error(detail);
-    if (Array.isArray(detail)) return new Error(JSON.stringify(detail));
-    if (typeof data.error === "string") return new Error(data.error);
-    return new Error(JSON.stringify(data));
+    if (typeof detail === "string") return new ApiError(detail, res.status, data);
+    if (Array.isArray(detail)) {
+      return new ApiError(JSON.stringify(detail), res.status, data);
+    }
+    if (typeof data.error === "string") {
+      return new ApiError(data.error, res.status, data);
+    }
+    return new ApiError(JSON.stringify(data), res.status, data);
   } catch {
-    return new Error(res.statusText || `Erreur ${res.status}`);
+    return new ApiError(res.statusText || `Erreur ${res.status}`, res.status);
   }
 }
 

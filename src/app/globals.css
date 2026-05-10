@@ -1,64 +1,202 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-1: #0872e0;
-  --color-primary-2: #3d92e8;
-  --color-primary-3: #6eb0f0;
-  --color-secondary-1: #ff8a00;
-  --color-neutral-0: #ffffff;
-  --color-neutral-1: #f6f8fa;
-  --color-neutral-2: #eef2f6;
-  --color-neutral-3: #e4e9ef;
-  --color-neutral-4: #c5ced8;
-  --color-neutral-5: #8b9aad;
-  --color-neutral-6: #4a5b6e;
-  --color-neutral-7: #1a2b3c;
-  --color-neutral-8: #03172d;
-  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
-  --text-h1: 1.875rem;
-  --text-h2: 1.5rem;
-  --text-h3: 1.25rem;
-  --text-body: 1rem;
-  --text-small: 0.875rem;
-  --text-xs: 0.75rem;
+    /*================= POLICE ======================= */
+    --font-poppins: "Poppins", sans-serif;
+    --default-font-family: "Poppins", sans-serif;
+
+    /* ===== TAILLES DE TEXTE ===== */
+    --text-h1: 48px;
+    --text-h2: 40px;
+    --text-h3: 32px;
+    --text-h4: 24px;
+    --text-h5: 20px;
+    --text-h6: 18px;
+    --text-body: 16px;
+    --text-small: 14px;
+    --text-xs: 12px;
+
+    /* ===== TAILLES D'ARRONDI ===== */
+    --rounded-h1: 12px;
+    --rounded-h2: 8px;
+    --rounded-h3: 4px;
+
+    /*================= COULEURS PRIMAIRES - SKY BLUE ======================= */
+    --color-primary-0: #0872E0;
+    --color-primary-1: #0872E0;
+    --color-primary-2: #0872E0CC;
+    --color-primary-3: #0872E099;
+    --color-primary-4: #0872E066;
+    --color-primary-5: #0872E033;
+
+    /*================= COULEURS SECONDAIRES - ORANGE ======================= */
+    --color-secondary-0: #FF8A00;
+    --color-secondary-1: #FF8A00;
+    --color-secondary-2: #FF8A00CC;
+    --color-secondary-3: #FF8A0099;
+    --color-secondary-4: #FF8A0066;
+    --color-secondary-5: #FF8A0033;
+    --color-secondary-6: #CD6F00;
+
+    /*================= COULEURS NEUTRES — MODE LIGHT ======================= */
+    --color-neutral-0: #FFFFFF;
+    --color-neutral-1: #FFFFFF;
+    --color-neutral-2: #F9F9FC;
+    --color-neutral-3: #F4F4F8;
+    --color-neutral-4: #03172D33;
+    --color-neutral-5: #03172D66;
+    --color-neutral-6: #03172D99;
+    --color-neutral-7: #03172DCC;
+    --color-neutral-8: #03172D;
 }
 
-.dark {
-  --color-neutral-0: #03172d;
-  --color-neutral-1: #0d1a26;
-  --color-neutral-2: #0a1520;
-  --color-neutral-3: #061018;
-  --color-neutral-4: #1e3a4d;
-  --color-neutral-5: #5c6b7a;
-  --color-neutral-6: #9aa8b8;
-  --color-neutral-7: #dce3ea;
-  --color-neutral-8: #f2f6fa;
+/* =====================================================
+   MODE DARK — via classe .dark sur <html>
+   Priorité : classe .dark > préférence système
+   ===================================================== */
+
+/* 1. Préférence système (si l'utilisateur n'a pas encore choisi) */
+@media (prefers-color-scheme: dark) {
+    :root:not(.light) {
+        --color-neutral-0: #0A0F1A;
+        --color-neutral-1: #111827;
+        --color-neutral-2: #1A2332;
+        --color-neutral-3: #1F2D3D;
+        --color-neutral-4: #FFFFFF1A;
+        --color-neutral-5: #FFFFFF4D;
+        --color-neutral-6: #FFFFFF80;
+        --color-neutral-7: #FFFFFFB3;
+        --color-neutral-8: #F1F5F9;
+    }
 }
 
-@layer base {
-  * {
-    scrollbar-color: var(--color-primary-1) var(--color-neutral-2);
-  }
+/* 2. Classe .dark forcée (choix explicite de l'utilisateur) */
+:root.dark {
+    --color-neutral-0: #0A0F1A;
+    --color-neutral-1: #111827;
+    --color-neutral-2: #1A2332;
+    --color-neutral-3: #1F2D3D;
+    --color-neutral-4: #FFFFFF1A;
+    --color-neutral-5: #FFFFFF4D;
+    --color-neutral-6: #FFFFFF80;
+    --color-neutral-7: #FFFFFFB3;
+    --color-neutral-8: #F1F5F9;
+}
 
-  *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
+/* 3. Classe .light forcée (retour au light explicite) */
+:root.light {
+    --color-neutral-0: #FFFFFF;
+    --color-neutral-1: #FFFFFF;
+    --color-neutral-2: #F9F9FC;
+    --color-neutral-3: #F4F4F8;
+    --color-neutral-4: #03172D33;
+    --color-neutral-5: #03172D66;
+    --color-neutral-6: #03172D99;
+    --color-neutral-7: #03172DCC;
+    --color-neutral-8: #03172D;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background: var(--color-primary-1);
-    border-radius: 8px;
-  }
+/* =====================================================
+   ANIMATION TOAST
+   ===================================================== */
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
 
-  *::-webkit-scrollbar-track {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-in {
+    animation: slide-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =====================================================
+   ANIMATIONS MODALE
+   ===================================================== */
+@keyframes modal-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes modal-scale-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.animate-modal-fade {
+    animation: modal-fade-in 0.18s ease-out;
+}
+
+.animate-modal-scale {
+    animation: modal-scale-in 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =====================================================
+   TRANSITION GLOBALE pour un changement de thème fluide
+   width / min-width exclus pour ne pas bloquer les animations layout
+   ===================================================== */
+*, *::before, *::after {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* =====================================================
+   SCROLLBAR PERSONNALISÉE
+   ===================================================== */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
     background: var(--color-neutral-2);
-  }
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary-1);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #065bb3;
+}
+
+/* =====================================================
+   CURSEUR SUR ELEMENTS CLIQUABLES
+   ===================================================== */
+button,
+a[href],
+[role="button"],
+summary,
+select,
+input[type="checkbox"],
+input[type="radio"],
+input[type="submit"],
+input[type="button"] {
+    cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+    cursor: not-allowed;
 }
 
 body {
-  background: var(--color-neutral-3);
-  color: var(--color-neutral-8);
-  font-family: var(--font-sans);
-  font-size: var(--text-body);
-  -webkit-font-smoothing: antialiased;
+    background: var(--color-neutral-3);
+    color: var(--color-neutral-8);
+    font-family: var(--default-font-family);
 }
