@@ -54,6 +54,7 @@ Pour le design system réutilisable sous Next.js, **copier** le bloc **`@theme` 
 | `Backoffice_programs.md` | Prompt / spec **page Programmes** (`GET/POST/PATCH` **`/programs/programs/`**, validation admin, `program_modules`, statuts, mentor vs créateur). |
 | `Backoffice_settings.md` | Prompt / spec **page Paramètres** (`GET/PATCH` **`/users/auth/me/`**, préférences notif, MDP, avatar via **`POST /uploads/`**). |
 | `Backoffice_profile.md` | Prompt / spec **page Profil** (carte d’identité, `GET` **`/users/auth/me/`**, liens vers Paramètres) quand les deux écrans coexistent. |
+| `Backoffice_login.md` | Prompt / spec **page Connexion** backoffice (split layout type landing, carte centrée, jetons **`primary-*` / `neutral-*`**, `POST` **`/users/login/`**, lien mot de passe oublié). |
 | `BACKOFFICE_API_BACKLOG.md` | **File d’attente** des évolutions API à appliquer **après** la livraison front backoffice (pagination, filtres, enrichissements serializers), avec checklist régénération Swagger / Postman. |
 
 ---
@@ -82,7 +83,7 @@ Pour la **liste détaillée des champs**, typer depuis la réponse réelle ou le
 
 | Méthode | Endpoint | Notes |
 |--------|----------|------|
-| Connexion | `POST /users/login/` | Tokens JWT (`LoginResponse` dans Swagger). |
+| Connexion | `POST /users/login/` | Tokens JWT (`LoginResponse` dans Swagger). Détail UX **page Connexion** (split layout, carte, footer) : **`Backoffice_login.md`**. |
 | Rafraîchissement | `POST /users/auth/token/refresh/` | |
 | Profil | `GET/PATCH /users/auth/me/` | `PATCH` sans modifier `email` en écriture arbitraire côté produit suivant Swagger. UX **Paramètres** (formulaires) : **`Backoffice_settings.md`** ; vue **Profil** résumé : **`Backoffice_profile.md`**. |
 | Liste utilisateurs (admin) | `GET /users/auth/users/` | Périmètre **`IsAdminUserCustom`** (voir permissions). |
