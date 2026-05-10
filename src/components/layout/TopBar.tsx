@@ -767,25 +767,6 @@ const TopBar = ({
                 Paramètres
               </button>
 
-              <button
-                onClick={() => {
-                  setMenuOpen(false);
-                  router.push("/dashboard/privacy-policy");
-                }}
-                type="button"
-                className="flex items-center gap-3 w-full px-4 py-2.5 text-small text-neutral-8 hover:bg-neutral-3 transition-colors rounded-2xl"
-              >
-                <Icon
-                  icon="solar:shield-keyhole-bold"
-                  width={16}
-                  height={16}
-                  className="text-neutral-6 shrink-0"
-                />
-                <span className="truncate flex-1 text-left">
-                  Politique &amp; confidentialité
-                </span>
-              </button>
-
               <div className="h-px bg-neutral-4 my-1" />
 
               <button
