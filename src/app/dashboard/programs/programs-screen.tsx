@@ -172,12 +172,16 @@ export default function ProgramsScreen() {
     return () => clearTimeout(id);
   }, [actionMessage]);
 
-  const tags = useMemo(() => {
-    const set = new Set<string>();
+  const categoryOptions = useMemo(() => {
+    const map = new Map<string, string>();
     for (const p of programs) {
-      if (p.tag) set.add(p.tag);
+      const slug = p.category?.slug ?? p.tag;
+      const label = p.category?.label ?? p.tag;
+      if (slug) map.set(slug, label || slug);
     }
-    return Array.from(set).sort((a, b) => a.localeCompare(b));
+    return Array.from(map.entries()).sort((a, b) =>
+      a[1].localeCompare(b[1], "fr"),
+    );
   }, [programs]);
 
   const kpis = useMemo(() => {
@@ -198,9 +202,15 @@ export default function ProgramsScreen() {
       .filter((p) => {
         if (statusFilter !== "all" && p.validation_status !== statusFilter)
           return false;
-        if (tagFilter !== "all" && p.tag !== tagFilter) return false;
+        const programCategory = p.category?.slug ?? p.tag;
+        if (tagFilter !== "all" && programCategory !== tagFilter) return false;
         if (q) {
-          const haystack = [p.title, p.tag, p.description]
+          const haystack = [
+            p.title,
+            p.category?.label,
+            p.tag,
+            p.description,
+          ]
             .map(normalize)
             .join(" ");
           if (!haystack.includes(q)) return false;
@@ -498,7 +508,7 @@ export default function ProgramsScreen() {
               type="search"
               value={search}
               onChange={(event) => setSearch(event.target.value)}
-              placeholder="Rechercher (titre, tag, description)…"
+              placeholder="Rechercher (titre, catégorie, description)…"
               className="w-full rounded-xl border border-neutral-4 bg-neutral-2 px-9 py-2 text-small text-neutral-8 placeholder:text-neutral-5 focus:border-primary-3 focus:bg-neutral-1 focus:outline-none"
             />
           </div>
@@ -506,11 +516,11 @@ export default function ProgramsScreen() {
           <div className="flex flex-wrap items-center gap-2">
             <StatusChips value={statusFilter} onChange={setStatusFilter} />
 
-            <label htmlFor="programs-tag" className="sr-only">
-              Tag
+            <label htmlFor="programs-category" className="sr-only">
+              Catégorie
             </label>
             <select
-              id="programs-tag"
+              id="programs-category"
               value={tagFilter}
               onChange={(event) =>
                 setTagFilter(
@@ -518,12 +528,12 @@ export default function ProgramsScreen() {
                 )
               }
               className="rounded-xl border border-neutral-4 bg-neutral-2 px-3 py-2 text-xs text-neutral-8 focus:border-primary-3 focus:bg-neutral-1 focus:outline-none"
-              title="Filtrer par tag"
+              title="Filtrer par catégorie"
             >
-              <option value="all">Tous les tags</option>
-              {tags.map((tag) => (
-                <option key={tag} value={tag}>
-                  {tag}
+              <option value="all">Toutes les catégories</option>
+              {categoryOptions.map(([slug, label]) => (
+                <option key={slug} value={slug}>
+                  {label}
                 </option>
               ))}
             </select>
@@ -810,9 +820,9 @@ function ProgramCard({
             <p className="text-small font-semibold wrap-break-word text-neutral-8 hover:text-primary-1">
               {program.title || "Programme sans titre"}
             </p>
-            {program.tag ? (
+            {program.category?.label || program.tag ? (
               <p className="mt-1 text-[11px] font-semibold tracking-wide text-neutral-6 uppercase">
-                {program.tag}
+                {program.category?.label ?? program.tag}
               </p>
             ) : null}
           </Link>

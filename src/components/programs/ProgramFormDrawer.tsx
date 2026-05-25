@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Icon } from "@iconify/react";
 import { ApiError } from "@/lib/api";
+import { listCategories, type Category } from "@/services/categoryService";
 import {
   createProgram,
   updateProgram,
@@ -66,7 +67,9 @@ export default function ProgramFormDrawer({
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [tag, setTag] = useState("");
+  const [categoryId, setCategoryId] = useState<number | "">("");
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(false);
   const [lengthInWeeks, setLengthInWeeks] = useState<number>(8);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -91,7 +94,7 @@ export default function ProgramFormDrawer({
 
     setTitle(initial?.title ?? "");
     setDescription(initial?.description ?? "");
-    setTag(initial?.tag ?? "");
+    setCategoryId(initial?.category?.id ?? "");
     setLengthInWeeks(initial?.length_in_weeks ?? 8);
     setStartDate(initial?.start_date ?? "");
     setEndDate(initial?.end_date ?? "");
@@ -101,6 +104,31 @@ export default function ProgramFormDrawer({
     setCoverPreview(initial?.cover_url ?? null);
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [open, initial]);
+
+  useEffect(() => {
+    if (!open) return;
+    let cancelled = false;
+    setCategoriesLoading(true);
+    listCategories()
+      .then((list) => {
+        if (!cancelled) setCategories(list);
+      })
+      .catch(() => {
+        if (!cancelled) setCategories([]);
+      })
+      .finally(() => {
+        if (!cancelled) setCategoriesLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open || !initial || categoryId !== "") return;
+    const match = categories.find((c) => c.slug === initial.tag);
+    if (match) setCategoryId(match.id);
+  }, [open, initial, categories, categoryId]);
 
   useEffect(() => {
     if (!open) return;
@@ -162,8 +190,8 @@ export default function ProgramFormDrawer({
       setErrors({ description: ["La description est obligatoire."] });
       return;
     }
-    if (!tag.trim()) {
-      setErrors({ tag: ["Le tag est obligatoire."] });
+    if (categoryId === "") {
+      setErrors({ category_id: ["La catégorie est obligatoire."] });
       return;
     }
     if (!startDate || !endDate) {
@@ -192,7 +220,7 @@ export default function ProgramFormDrawer({
     const payload: ProgramWritePayload = {
       title: title.trim(),
       description: description.trim(),
-      tag: tag.trim(),
+      category_id: Number(categoryId),
       length_in_weeks: lengthInWeeks,
       start_date: startDate,
       end_date: endDate,
@@ -300,14 +328,33 @@ export default function ProgramFormDrawer({
             </Field>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              <Field label="Tag" error={fieldError("tag")} required>
-                <input
-                  type="text"
-                  value={tag}
-                  onChange={(e) => setTag(e.target.value)}
+              <Field
+                label="Catégorie"
+                error={fieldError("category_id") ?? fieldError("tag")}
+                required
+              >
+                <select
+                  value={categoryId}
+                  onChange={(e) =>
+                    setCategoryId(
+                      e.target.value === "" ? "" : Number(e.target.value),
+                    )
+                  }
                   className={INPUT_CLASS}
-                  placeholder="Ex. Data Science"
-                />
+                  disabled={categoriesLoading}
+                  title="Catégorie du programme"
+                >
+                  <option value="">
+                    {categoriesLoading
+                      ? "Chargement…"
+                      : "Sélectionner une catégorie"}
+                  </option>
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.label}
+                    </option>
+                  ))}
+                </select>
               </Field>
               <Field
                 label="Durée (semaines)"

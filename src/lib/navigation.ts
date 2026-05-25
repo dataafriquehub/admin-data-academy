@@ -3,6 +3,7 @@ import type { UserRole } from "./types";
 export type NavKey =
   | "dashboard"
   | "programs"
+  | "categories"
   | "modules"
   | "blog"
   | "admissions"
@@ -36,6 +37,13 @@ export const NAV_ITEMS: NavItem[] = [
     icon: "solar:clipboard-list-bold",
     label: "Programmes",
     roles: ["admin", "program_creator", "mentor"],
+  },
+  {
+    key: "categories",
+    href: "/dashboard/categories",
+    icon: "solar:tag-bold",
+    label: "Catégories",
+    roles: ["admin"],
   },
   {
     key: "modules",

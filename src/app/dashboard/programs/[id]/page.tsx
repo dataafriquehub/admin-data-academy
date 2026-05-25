@@ -326,9 +326,9 @@ export default function ProgramDetailPage() {
           <div className="flex flex-col gap-3 p-5">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="min-w-0">
-                {program.tag ? (
+                {program.category?.label || program.tag ? (
                   <p className="text-[11px] font-semibold tracking-wide text-neutral-6 uppercase">
-                    {program.tag}
+                    {program.category?.label ?? program.tag}
                   </p>
                 ) : null}
                 <h1 className="mt-1 text-h4 font-semibold wrap-break-word text-neutral-8">

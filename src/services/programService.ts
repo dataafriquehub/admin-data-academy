@@ -1,5 +1,6 @@
 import { apiFetch, unwrapArray } from "@/lib/api";
 import type { User } from "@/lib/types";
+import type { Category } from "./categoryService";
 import type { ModuleSummary } from "./moduleService";
 
 export { uploadFile, type UploadedFile } from "./uploadService";
@@ -26,6 +27,7 @@ export type Program = {
   description: string;
   cover_url?: string | null;
   tag: string;
+  category?: Category | null;
   length_in_weeks: number;
   start_date: string;
   end_date: string;
@@ -58,6 +60,7 @@ export type ProgramWritePayload = {
   description?: string;
   cover_url?: string | null;
   tag?: string;
+  category_id?: number;
   length_in_weeks?: number;
   start_date?: string;
   end_date?: string;
