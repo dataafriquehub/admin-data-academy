@@ -103,6 +103,9 @@ export default function ProgramDetailPage() {
   const [deleting, setDeleting] = useState(false);
   const [approving, setApproving] = useState(false);
   const [unapproving, setUnapproving] = useState(false);
+  const [validationAction, setValidationAction] = useState<
+    "approve" | "unapprove" | null
+  >(null);
   const [actionMessage, setActionMessage] = useState<{
     kind: "success" | "error";
     text: string;
@@ -368,7 +371,7 @@ export default function ProgramDetailPage() {
               {isAdmin && program.validation_status !== "approved" ? (
                 <button
                   type="button"
-                  onClick={() => void quickApprove()}
+                  onClick={() => setValidationAction("approve")}
                   disabled={approving}
                   className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60"
                 >
@@ -386,7 +389,7 @@ export default function ProgramDetailPage() {
               {isAdmin && program.validation_status === "approved" ? (
                 <button
                   type="button"
-                  onClick={() => void quickUnapprove()}
+                  onClick={() => setValidationAction("unapprove")}
                   disabled={unapproving}
                   className="inline-flex items-center gap-1.5 rounded-xl border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-xs font-semibold text-amber-700 transition hover:bg-amber-500/15 disabled:cursor-not-allowed disabled:opacity-60 dark:text-amber-300"
                 >
@@ -522,6 +525,46 @@ export default function ProgramDetailPage() {
         icon="solar:trash-bin-trash-bold"
         onConfirm={() => void confirmDelete()}
         onCancel={() => setDeleteOpen(false)}
+      />
+
+      <ConfirmAction
+        isOpen={Boolean(validationAction)}
+        title={
+          validationAction === "approve"
+            ? "Approuver ce programme ?"
+            : "Désapprouver ce programme ?"
+        }
+        description={
+          validationAction === "approve"
+            ? `« ${program.title} » sera visible dans le catalogue public.`
+            : `« ${program.title} » repassera en attente et ne sera plus considéré comme publié.`
+        }
+        confirmLabel={
+          validationAction === "approve"
+            ? approving
+              ? "Approbation…"
+              : "Approuver"
+            : unapproving
+              ? "Changement…"
+              : "Désapprouver"
+        }
+        cancelLabel="Annuler"
+        variant={validationAction === "approve" ? "primary" : "warning"}
+        icon={
+          validationAction === "approve"
+            ? "solar:check-circle-bold"
+            : "solar:clock-circle-bold"
+        }
+        onConfirm={() => {
+          const action = validationAction;
+          setValidationAction(null);
+          if (action === "approve") {
+            void quickApprove();
+          } else if (action === "unapprove") {
+            void quickUnapprove();
+          }
+        }}
+        onCancel={() => setValidationAction(null)}
       />
     </div>
   );

@@ -14,6 +14,7 @@ import {
   type Session,
   type SessionTemporalStatus,
 } from "@/services/mentorshipService";
+import ConfirmAction from "@/components/ConfirmAction";
 import SessionFormDrawer from "@/components/mentorship/SessionFormDrawer";
 import AttendeesDrawer from "@/components/mentorship/AttendeesDrawer";
 
@@ -134,6 +135,7 @@ export default function MentorshipScreen() {
   } | null>(null);
   const [calendarBusyId, setCalendarBusyId] = useState<number | null>(null);
   const [deleteBusyId, setDeleteBusyId] = useState<number | null>(null);
+  const [deleteTarget, setDeleteTarget] = useState<Session | null>(null);
 
   const loadSessions = useCallback(async () => {
     setLoading(true);
@@ -321,14 +323,13 @@ export default function MentorshipScreen() {
     });
   }
 
-  async function handleDelete(session: Session) {
-    if (
-      !window.confirm(
-        `Supprimer la session « ${session.title} » ? Cette action est irréversible.`,
-      )
-    ) {
-      return;
-    }
+  function handleDelete(session: Session) {
+    setDeleteTarget(session);
+  }
+
+  async function confirmDelete() {
+    if (!deleteTarget) return;
+    const session = deleteTarget;
     setDeleteBusyId(session.id);
     try {
       await deleteSession(session.id);
@@ -341,6 +342,7 @@ export default function MentorshipScreen() {
       });
     } finally {
       setDeleteBusyId(null);
+      setDeleteTarget(null);
     }
   }
 
@@ -673,6 +675,22 @@ export default function MentorshipScreen() {
           setAttendeesOpen(false);
           setAttendeesSession(null);
         }}
+      />
+
+      <ConfirmAction
+        isOpen={Boolean(deleteTarget)}
+        title="Supprimer cette session ?"
+        description={
+          deleteTarget
+            ? `« ${deleteTarget.title} » sera supprimée. Cette action est irréversible.`
+            : ""
+        }
+        confirmLabel={deleteBusyId ? "Suppression…" : "Supprimer"}
+        cancelLabel="Annuler"
+        variant="danger"
+        icon="solar:trash-bin-trash-bold"
+        onConfirm={() => void confirmDelete()}
+        onCancel={() => setDeleteTarget(null)}
       />
     </div>
   );

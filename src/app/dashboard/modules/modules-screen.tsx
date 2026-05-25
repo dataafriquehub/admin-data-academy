@@ -9,6 +9,7 @@ import {
   listModules,
   type ModuleSummary,
 } from "@/services/moduleService";
+import ConfirmAction from "@/components/ConfirmAction";
 import ModuleDetailDrawer from "@/components/modules/ModuleDetailDrawer";
 import ModuleFormDrawer from "@/components/modules/ModuleFormDrawer";
 
@@ -106,6 +107,7 @@ export default function ModulesScreen() {
     { kind: "success" | "error"; text: string } | null
   >(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [deleteTarget, setDeleteTarget] = useState<ModuleSummary | null>(null);
 
   const loadModules = useCallback(async () => {
     setLoading(true);
@@ -283,20 +285,19 @@ export default function ModulesScreen() {
     });
   }
 
-  async function handleDelete(module: ModuleSummary) {
-    if (
-      !window.confirm(
-        `Supprimer le module « ${module.title || `#${module.id}`} » ? Cette action est irréversible.`,
-      )
-    ) {
-      return;
-    }
-    setDeletingId(module.id);
+  function handleDelete(module: ModuleSummary) {
+    setDeleteTarget(module);
+  }
+
+  async function confirmDelete() {
+    if (!deleteTarget) return;
+    const targetModule = deleteTarget;
+    setDeletingId(targetModule.id);
     try {
-      await deleteModule(module.id);
-      setModules((prev) => prev.filter((m) => m.id !== module.id));
+      await deleteModule(targetModule.id);
+      setModules((prev) => prev.filter((m) => m.id !== targetModule.id));
       setActionMessage({ kind: "success", text: "Module supprimé." });
-      if (detailId === module.id) setDetailId(null);
+      if (detailId === targetModule.id) setDetailId(null);
     } catch (err) {
       setActionMessage({
         kind: "error",
@@ -309,6 +310,7 @@ export default function ModulesScreen() {
       });
     } finally {
       setDeletingId(null);
+      setDeleteTarget(null);
     }
   }
 
@@ -621,6 +623,22 @@ export default function ModulesScreen() {
           setFormId(null);
         }}
         onSaved={handleSaved}
+      />
+
+      <ConfirmAction
+        isOpen={Boolean(deleteTarget)}
+        title="Supprimer ce module ?"
+        description={
+          deleteTarget
+            ? `« ${deleteTarget.title || `#${deleteTarget.id}`} » sera supprimé. Cette action est irréversible.`
+            : ""
+        }
+        confirmLabel={deletingId ? "Suppression…" : "Supprimer"}
+        cancelLabel="Annuler"
+        variant="danger"
+        icon="solar:trash-bin-trash-bold"
+        onConfirm={() => void confirmDelete()}
+        onCancel={() => setDeleteTarget(null)}
       />
     </div>
   );

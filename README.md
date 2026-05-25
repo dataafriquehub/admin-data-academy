@@ -28,7 +28,17 @@ NEXT_PUBLIC_API_BASE_URL=https://api-academy-dev.dataafriquehub.org/api
 
 # Optionnel : route du refresh JWT si différente du défaut /users/auth/token/refresh/
 # NEXT_PUBLIC_JWT_REFRESH_PATH=/users/auth/token/refresh/
+
+# Optionnel : landing publique (bouton « Voir en ligne » sur les articles publiés)
+# NEXT_PUBLIC_MARKETING_SITE_URL=http://localhost:3000
 ```
+
+## Blog (articles landing)
+
+- Menu **Blog** → `/dashboard/blog` (admin + program_creator)
+- API : `GET/POST/PATCH/DELETE /api/blog/posts/`
+- Articles publiés visibles sur la landing : `GET /api/blog/posts/public/`
+- Prérequis backend : app `apps.blog` migrée (`python manage.py migrate blog`)
 
 ## Lancer en local
 

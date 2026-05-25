@@ -4,6 +4,7 @@ export type NavKey =
   | "dashboard"
   | "programs"
   | "modules"
+  | "blog"
   | "admissions"
   | "mentorship"
   | "community"
@@ -41,6 +42,13 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/dashboard/modules",
     icon: "ph:stack-fill",
     label: "Modules",
+    roles: ["admin", "program_creator"],
+  },
+  {
+    key: "blog",
+    href: "/dashboard/blog",
+    icon: "solar:notebook-bold",
+    label: "Blog",
     roles: ["admin", "program_creator"],
   },
   {

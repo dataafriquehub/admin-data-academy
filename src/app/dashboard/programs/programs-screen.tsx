@@ -25,6 +25,11 @@ type SortKey =
   | "start_asc"
   | "start_desc";
 
+type ValidationAction = {
+  type: "approve" | "unapprove";
+  program: Program;
+};
+
 const SORT_OPTIONS: { value: SortKey; label: string }[] = [
   { value: "updated_desc", label: "Récents en premier" },
   { value: "updated_asc", label: "Anciens en premier" },
@@ -122,6 +127,8 @@ export default function ProgramsScreen() {
   const [deleteTarget, setDeleteTarget] = useState<Program | null>(null);
   const [deleting, setDeleting] = useState(false);
   const [validatingId, setValidatingId] = useState<number | null>(null);
+  const [validationAction, setValidationAction] =
+    useState<ValidationAction | null>(null);
 
   const [actionMessage, setActionMessage] = useState<{
     kind: "success" | "error";
@@ -585,8 +592,12 @@ export default function ProgramsScreen() {
               canEdit={programIsEditableBy(program, user)}
               canValidate={isAdmin}
               validating={validatingId === program.id}
-              onApprove={() => void quickApprove(program)}
-              onUnapprove={() => void quickUnapprove(program)}
+              onApprove={() =>
+                setValidationAction({ type: "approve", program })
+              }
+              onUnapprove={() =>
+                setValidationAction({ type: "unapprove", program })
+              }
               onEdit={() => openEdit(program)}
               onDelete={() => setDeleteTarget(program)}
             />
@@ -616,6 +627,49 @@ export default function ProgramsScreen() {
         icon="solar:trash-bin-trash-bold"
         onConfirm={() => void confirmDelete()}
         onCancel={() => setDeleteTarget(null)}
+      />
+
+      <ConfirmAction
+        isOpen={Boolean(validationAction)}
+        title={
+          validationAction?.type === "approve"
+            ? "Approuver ce programme ?"
+            : "Désapprouver ce programme ?"
+        }
+        description={
+          validationAction?.program
+            ? validationAction.type === "approve"
+              ? `« ${validationAction.program.title} » sera visible dans le catalogue public.`
+              : `« ${validationAction.program.title} » repassera en attente et ne sera plus considéré comme publié.`
+            : ""
+        }
+        confirmLabel={
+          validatingId
+            ? validationAction?.type === "approve"
+              ? "Approbation…"
+              : "Changement…"
+            : validationAction?.type === "approve"
+              ? "Approuver"
+              : "Désapprouver"
+        }
+        cancelLabel="Annuler"
+        variant={validationAction?.type === "approve" ? "primary" : "warning"}
+        icon={
+          validationAction?.type === "approve"
+            ? "solar:check-circle-bold"
+            : "solar:clock-circle-bold"
+        }
+        onConfirm={() => {
+          if (!validationAction) return;
+          const { type, program } = validationAction;
+          setValidationAction(null);
+          if (type === "approve") {
+            void quickApprove(program);
+          } else {
+            void quickUnapprove(program);
+          }
+        }}
+        onCancel={() => setValidationAction(null)}
       />
     </div>
   );

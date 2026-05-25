@@ -163,7 +163,7 @@ function LoginForm() {
                 <Icon
                   icon="solar:letter-bold"
                   width={16}
-                  className="absolute top-1/2 left-3 -translate-y-1/2 text-neutral-5"
+                  className="pointer-events-none absolute top-1/2 left-3 z-10 -translate-y-1/2 text-neutral-5"
                 />
                 <input
                   type="email"
@@ -185,7 +185,7 @@ function LoginForm() {
                 <Icon
                   icon="solar:lock-keyhole-bold"
                   width={16}
-                  className="absolute top-1/2 left-3 -translate-y-1/2 text-neutral-5"
+                  className="pointer-events-none absolute top-1/2 left-3 z-10 -translate-y-1/2 text-neutral-5"
                 />
                 <input
                   type={showPassword ? "text" : "password"}
